@@ -52,6 +52,7 @@
         android:background="@drawable/shape"
         android:backgroundTint="@color/inicioColor"
         android:text="@string/perfilText"
+        android:onClick="accionPerfil"
         android:textColor="@color/blanco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

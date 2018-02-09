@@ -36,4 +36,9 @@ public class MainActivity extends AppCompatActivity {
         boton1.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.INVISIBLE);
     }
+
+    public void accionPerfil(View view) {
+        Intent intent = new Intent(this, RecyclePeliculas.class);
+        startActivity(intent);
+    }
 }

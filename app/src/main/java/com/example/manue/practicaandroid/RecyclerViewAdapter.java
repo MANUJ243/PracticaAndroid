@@ -1,12 +1,15 @@
 package com.example.manue.practicaandroid;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.twitter.sdk.android.core.models.Card;
 
 import org.w3c.dom.Text;
 
@@ -37,6 +40,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.tv_pelicula_title.setText(mData.get(position).getTitle());
         holder.pelicula_thumbnail.setImageResource(mData.get(position).getThumbnail());
+        holder.cardView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @Override
@@ -47,13 +56,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public static  class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tv_pelicula_title;
         ImageView pelicula_thumbnail;
+        CardView cardView;
 
         public MyViewHolder(View itemView){
             super(itemView);
 
             tv_pelicula_title = (TextView) itemView.findViewById(R.id.pelicula_title_id);
             pelicula_thumbnail = (ImageView) itemView.findViewById(R.id.pelicula_img_id);
-
+            cardView = (CardView) itemView.findViewById(R.id.cardview_id);
         }
     }
 
