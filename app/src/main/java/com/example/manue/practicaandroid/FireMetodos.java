@@ -47,6 +47,11 @@ public class FireMetodos {
         });
     }
 
+    public static void anadirPuntuacionUser(FirebaseUser user){
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("usuarios").child(user.getUid()).setValue(0);
+    }
+
     public static void writeNewFilm(String peliculaID, String name, String desc) {
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         Pelicula pelicula = new Pelicula(name, desc);
