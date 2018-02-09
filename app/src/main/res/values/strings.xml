@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PracticaAndroid</string>
+    <string name="singlePlayerText">EMOJI</string>
+    <string name="batallaText">BSO QUIZ</string>
+    <string name="perfilText">PERFIL</string>
+    <string name="loginFail">Error en el Login</string>
+    <string name="authError">Error al autenticar</string>
+</resources>

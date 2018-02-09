@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "983349644466",
+    "firebase_url": "https://practicaandroid-81080.firebaseio.com",
+    "project_id": "practicaandroid-81080",
+    "storage_bucket": "practicaandroid-81080.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983349644466:android:adba981c7a7f4017",
+        "android_client_info": {
+          "package_name": "com.example.manue.practicaandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983349644466-kr0o4cammu0slf1j2203mb3sdse9r3gl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.manue.practicaandroid",
+            "certificate_hash": "a270aa05267a73387193a481dfa9d70156b16d44"
+          }
+        },
+        {
+          "client_id": "983349644466-af7agkq122pj4nn89804o9eqouebsq5f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAktIhgbRHenHG8t24rJuM1LpNKQuRyQU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983349644466-af7agkq122pj4nn89804o9eqouebsq5f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
