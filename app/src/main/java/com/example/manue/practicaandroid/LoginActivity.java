@@ -18,14 +18,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-// Choose authentication providers
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
+                new AuthUI.IdpConfig.Builder(AuthUI.PHONE_VERIFICATION_PROVIDER).build(),
                 new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build(),
                 new AuthUI.IdpConfig.Builder(AuthUI.FACEBOOK_PROVIDER).build(),
                 new AuthUI.IdpConfig.Builder(AuthUI.TWITTER_PROVIDER).build());
 
-// Create and launch sign-in intent
         startActivityForResult(
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
@@ -42,12 +41,11 @@ public class LoginActivity extends AppCompatActivity {
             IdpResponse response = IdpResponse.fromResultIntent(data);
 
             if (resultCode == RESULT_OK) {
-                // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             } else {
-                // Sign in failed, check response for error code
+                // error de sign_in
             }
         }
     }

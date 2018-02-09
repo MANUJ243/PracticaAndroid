@@ -6,8 +6,8 @@
     <string name="loginFail">Error en el Login</string>
     <string name="authError">Error al autenticar</string>
     <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
-    <string name="facebook_application_id" translatable="false">YOUR_APP_ID</string>
-    <string name="facebook_login_protocol_scheme" translatable="false">fbYOUR_APP_ID</string>
+    <string name="facebook_application_id" translatable="false">243344506066615</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">278526bfea4df06e99e46a213e43cb53</string>
     <!-- Twitter consumer key and secret -->
     <string name="twitter_consumer_key" translatable="false">P5BdxDhl8MNhegr6uHLkyficn</string>
     <string name="twitter_consumer_secret" translatable="false">40UT0OEO77kkQfl3BWMq2dfOOAukG4qK8yMZDVLFcNX8IYJXOQ</string>
