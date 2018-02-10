@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <com.master.glideimageview.GlideImageView
             android:id="@+id/pelicula_img_id"
             android:layout_width="match_parent"
             android:layout_height="160dp"
