@@ -1,6 +1,7 @@
 package com.example.manue.practicaandroid;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -43,8 +44,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.cardView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                mediaPlayer = MediaPlayer.create(mContext, Uri.parse(mData.get(position).getAudio()));
-                mediaPlayer.start();
+                Intent intent = new Intent(mContext, Resolver.class);
+                intent.putExtra("textoIntent",mData.get(position).getUrl());
+                intent.putExtra("nombreIntent",mData.get(position).getTitle());
+                intent.putExtra("audioUrl",mData.get(position).getAudio());
+                mContext.startActivity(intent);
             }
         });
     }

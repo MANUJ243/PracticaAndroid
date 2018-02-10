@@ -80,12 +80,6 @@ public class FireMetodos {
         mDatabase.child("usuarios").child(user.getUid()).child("puntosBSO").setValue(0);
     }
 
-    public static void writeNewFilm(String peliculaID, String name, String desc) {
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        Pelicula pelicula = new Pelicula(name, desc);
-        mDatabase.child("peliculas").child(peliculaID).setValue(pelicula);
-    }
-
     public static void getPuntosFromFirebase(final Context context) {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -95,10 +89,10 @@ public class FireMetodos {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 puntos = Integer.parseInt(dataSnapshot.child("puntos").getValue().toString());
-                puntos = Integer.parseInt(dataSnapshot.child("puntosBSO").getValue().toString());
+                puntosBSO = Integer.parseInt(dataSnapshot.child("puntosBSO").getValue().toString());
 
-                Intent intent = new Intent(context, Lista.class);
-                context.startActivity(intent);
+                //Intent intent = new Intent(context, Lista.class);
+                //context.startActivity(intent);
             }
 
             @Override

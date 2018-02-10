@@ -36,6 +36,7 @@ Lista extends AppCompatActivity {
         Intent intent = new Intent(this, Resolver.class);
         intent.putExtra("textoIntent",texto);
         intent.putExtra("nombreIntent",nombre);
+        intent.putExtra("audioUrl","");
         startActivity(intent);
     }
 }

@@ -1,6 +1,9 @@
 package com.example.manue.practicaandroid;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,11 +12,8 @@ import android.widget.TextView;
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,13 +22,14 @@ import java.util.Random;
 public class Resolver extends AppCompatActivity {
     String texto;
     String nombreFilm;
+    String audio;
+    private MediaPlayer mediaPlayer;
     TextView textView,textViewIntento;
     private static final String TAG = "RESOLVER";
     ArrayList<Button> botonesActivos = new ArrayList<>();
     ArrayList<Button> botonesInactivos = new ArrayList<>();
     FirebaseUser user;
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-    String puntos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,36 +38,29 @@ public class Resolver extends AppCompatActivity {
 
         Intent datosEntrada = getIntent();  //cojo el intent
         user = FirebaseAuth.getInstance().getCurrentUser();
-        instaciaBBDD();
 
         if (datosEntrada != null){  //cojo los datos que me llegan del intent
             texto = datosEntrada.getStringExtra("textoIntent");
             nombreFilm = datosEntrada.getStringExtra("nombreIntent");
+            audio = datosEntrada.getStringExtra("audioUrl");
         }
 
         textView = findViewById(R.id.resolverText);
         textViewIntento = findViewById(R.id.intentoText);
 
-        textView.setText(texto);
+        if (audio.equals("")){
+            textView.setText(texto);
+        }else{
+            textView.setText("BANDA SONORA");
+            textView.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    mediaPlayer = MediaPlayer.create(getApplicationContext() , Uri.parse(audio));
+                    mediaPlayer.start();
+                }
+            });
+        }
+
         generadorBotones(nombreFilm);
-    }
-
-    public void instaciaBBDD(){
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference().child("usuarios").child(user.getUid());
-
-        ValueEventListener postListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                puntos = dataSnapshot.getValue().toString();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-        ref.addValueEventListener(postListener);
     }
 
     public void generadorBotones(String nombre){
@@ -166,6 +160,10 @@ public class Resolver extends AppCompatActivity {
     }
 
     private void actualizarPuntuacion(String UID, int points) {
-        mDatabase.child("usuarios").child(UID).setValue(Integer.parseInt(puntos)+points);
+        if (audio.equals("")){
+            mDatabase.child("usuarios").child(UID).child("puntos").setValue(FireMetodos.puntos+points);
+        }else{
+            mDatabase.child("usuarios").child(UID).child("puntosBSO").setValue(FireMetodos.puntosBSO+points);
+        }
     }
 }
