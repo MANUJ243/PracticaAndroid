@@ -57,7 +57,8 @@ public class FireMetodos {
                 for (int i = 0; i < dataSnapshot.getChildrenCount(); i++) {
                     String nombre = dataSnapshot.child(i + "").child("nombre").getValue().toString();
                     String url = dataSnapshot.child(i + "").child("url").getValue().toString();
-                    PeliculaBSO pelicula = new PeliculaBSO(nombre, url);
+                    String audio = dataSnapshot.child(i + "").child("audio").getValue().toString();
+                    PeliculaBSO pelicula = new PeliculaBSO(nombre, url, audio);
 
                     listaBSO.add(pelicula);
                 }

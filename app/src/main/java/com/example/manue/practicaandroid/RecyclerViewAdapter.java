@@ -1,19 +1,17 @@
 package com.example.manue.practicaandroid;
 
 import android.content.Context;
+import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.master.glideimageview.GlideImageView;
-import com.twitter.sdk.android.core.models.Card;
-
-import org.w3c.dom.Text;
-
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -23,6 +21,7 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private Context mContext;
     private List<PeliculaBSO> mData;
+    private MediaPlayer mediaPlayer;
 
     public RecyclerViewAdapter(Context mContext, List<PeliculaBSO> mData) {
         this.mContext = mContext;
@@ -38,14 +37,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.tv_pelicula_title.setText(mData.get(position).getTitle());
-        //holder.pelicula_thumbnail.setImageResource(mData.get(position).getThumbnail());
         holder.pelicula_thumbnail.loadImageUrl(mData.get(position).getUrl());
         holder.cardView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
+                mediaPlayer = MediaPlayer.create(mContext, Uri.parse(mData.get(position).getAudio()));
+                mediaPlayer.start();
             }
         });
     }
