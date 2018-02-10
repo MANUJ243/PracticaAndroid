@@ -3,8 +3,6 @@ package com.example.manue.practicaandroid;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.master.glideimageview.GlideImageView;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -41,6 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.tv_pelicula_title.setText(mData.get(position).getTitle());
         holder.pelicula_thumbnail.loadImageUrl(mData.get(position).getUrl());
+
         holder.cardView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {

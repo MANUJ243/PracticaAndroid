@@ -16,9 +16,9 @@
 
         <com.master.glideimageview.GlideImageView
             android:id="@+id/pelicula_img_id"
+            android:background="@drawable/gradient"
             android:layout_width="match_parent"
             android:layout_height="247dp"
-            android:background="@color/grisMate"
             android:scaleType="centerCrop" />
 
         <TextView

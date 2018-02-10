@@ -1,6 +1,5 @@
 package com.example.manue.practicaandroid;
 
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
