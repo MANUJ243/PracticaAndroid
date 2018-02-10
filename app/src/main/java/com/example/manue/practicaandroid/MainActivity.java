@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void accionPerfil(View view) {
-        Intent intent = new Intent(this, RecyclePeliculas.class);
-        startActivity(intent);
+        FireMetodos.getPeliculaArrayListBSO(this);
     }
 }
