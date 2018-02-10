@@ -40,5 +40,6 @@ dependencies {
     compile 'com.github.bumptech.glide:annotations:4.6.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
     compile 'com.master.android:glideimageview:1.0'
+    compile 'dyanamitechetan.vusikview:vusikview:1.1'
 }
 apply plugin: 'com.google.gms.google-services'
