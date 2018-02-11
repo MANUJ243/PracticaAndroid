@@ -22,18 +22,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void accionSinglePlayer(View view) {
-        if (FireMetodos.listaD.size() == 0 || FireMetodos.puntos == -1) {
-            Log.i(TAG, "ENTRO EN EL IF DE EL MAIN");
-            FireMetodos.getPeliculaArrayList();
-            Log.i(TAG, "METODO GET PELICULAS LLAMADO");
-            try {
-                Log.i(TAG, "INTENTO HACER EL AQUIRE DEL SEMAFORO");
-                FireMetodos.semaphore.acquire();
-            } catch (InterruptedException e) {
-            }
-        }
-
-        Log.i(TAG, "LLAMO A LA ACTIVIDAD");
         Intent intent = new Intent(this, Lista.class);
         startActivity(intent);
     }
@@ -51,15 +39,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void accionPerfil(View view) {
-        if (FireMetodos.listaBSO.size() == 0 || FireMetodos.puntosBSO == -1) {
-            FireMetodos.getPeliculaArrayListBSO();
-            try {
-                FireMetodos.semaphore.acquire();
-            } catch (InterruptedException e) {
-            }
-        }
-
-        Intent intent = new Intent(this, Lista.class);
+        Intent intent = new Intent(this, RecyclePeliculas.class);
         startActivity(intent);
     }
 }

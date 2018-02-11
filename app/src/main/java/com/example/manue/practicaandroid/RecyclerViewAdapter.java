@@ -36,19 +36,25 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.tv_pelicula_title.setText(mData.get(position).getTitle());
-        holder.pelicula_thumbnail.loadImageUrl(mData.get(position).getUrl());
+        holder.tv_pelicula_title.setText("Intentalo ;)");
 
-        holder.cardView.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(mContext, Resolver.class);
-                intent.putExtra("textoIntent",mData.get(position).getUrl());
-                intent.putExtra("nombreIntent",mData.get(position).getTitle());
-                intent.putExtra("audioUrl",mData.get(position).getAudio());
-                mContext.startActivity(intent);
-            }
-        });
+        if (FireMetodos.puntosBSO > position) {
+            holder.pelicula_thumbnail.loadImageUrl(mData.get(position).getUrl());
+            holder.tv_pelicula_title.setText(mData.get(position).getTitle());
+        }
+
+        if (FireMetodos.puntosBSO + 1 == position) {
+            holder.cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(mContext, Resolver.class);
+                    intent.putExtra("textoIntent", mData.get(position).getUrl());
+                    intent.putExtra("nombreIntent", mData.get(position).getTitle());
+                    intent.putExtra("audioUrl", mData.get(position).getAudio());
+                    mContext.startActivity(intent);
+                }
+            });
+        }
     }
 
     @Override

@@ -22,19 +22,14 @@ public class FireMetodos {
     public static ArrayList<PeliculaBSO> listaBSO = new ArrayList<>();
     public static int puntos = -1;
     public static int puntosBSO = -1;
-    public static Semaphore semaphore = new Semaphore(0);
     private static final String TAG = "FIREMETHOTS: ";
 
     public static void getPeliculaArrayList() {
-        Log.i(TAG, "EL TAMANO DE LISTAD ES "+listaD.size());
-
-            Log.i(TAG, "ESTOY DENTRO DE IF DE GETPELICULAS METODO");
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("peliculas");
             ref.addValueEventListener(new ValueEventListener() {
-
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    Log.i(TAG, "ENTRO EN ON DATA CHANGE");
+                    listaD.clear();
 
                     for (int i = 0; i < dataSnapshot.getChildrenCount(); i++) {
                         String emoji = dataSnapshot.child(i + "").child("emoji").getValue().toString();
@@ -43,9 +38,7 @@ public class FireMetodos {
 
                         listaD.add(pelicula);
                     }
-
-                    Log.i(TAG, "LLAMO A GET_PUNTOS");
-                    getPuntosFromFirebase();
+                    getPuntosFromFirebase(true);
                 }
 
                 @Override
@@ -56,7 +49,6 @@ public class FireMetodos {
     }
 
     public static void getPeliculaArrayListBSO() {
-        if (listaBSO.size() == 0) {
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("peliculasBSO");
             ref.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -71,7 +63,7 @@ public class FireMetodos {
 
                         listaBSO.add(pelicula);
                     }
-                    getPuntosFromFirebase();
+                    getPuntosFromFirebase(false);
                 }
 
                 @Override
@@ -79,7 +71,6 @@ public class FireMetodos {
                     Log.i("FIREBASE METHOTS", error.toString());
                 }
             });
-        }
     }
 
     public static void anadirPuntuacionUser(FirebaseUser user){
@@ -88,7 +79,7 @@ public class FireMetodos {
         mDatabase.child("usuarios").child(user.getUid()).child("puntosBSO").setValue(0);
     }
 
-    public static void getPuntosFromFirebase() {
+    public static void getPuntosFromFirebase(final boolean flag) {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference ref = database.getReference().child("usuarios").child(user.getUid());
@@ -99,8 +90,11 @@ public class FireMetodos {
                 puntos = Integer.parseInt(dataSnapshot.child("puntos").getValue().toString());
                 puntosBSO = Integer.parseInt(dataSnapshot.child("puntosBSO").getValue().toString());
 
-                Log.i(TAG, "COJO PUNTOS HAGO REALEASE");
-                semaphore.release();
+                if (flag){
+                    Lista.adapter.notifyDataSetChanged();
+                }else{
+                    RecyclePeliculas.myAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override

@@ -49,12 +49,12 @@ public class ListAdapter extends BaseAdapter{
             viewHolder = (UserViewHolder) layout.getTag();
         }
 
-        if (FireMetodos.puntos > (i * 3)){
+        if (FireMetodos.puntos > i){
             viewHolder.title.setText(peliculas.get(i).desc);           //los doy texto a los TextView
             viewHolder.subTitle.setText(peliculas.get(i).nombre);        //de viewHolder
-        }else if(FireMetodos.puntos == (i * 3)){
+        }else if(FireMetodos.puntos == i ){
             viewHolder.title.setText(peliculas.get(i).desc);           //los doy texto a los TextView
-            viewHolder.subTitle.setText("3 "+getEmojiByUnicode(0x1F31F));        //de viewHolder
+            viewHolder.subTitle.setText("1 "+getEmojiByUnicode(0x1F31F));        //de viewHolder
         }else{
             viewHolder.title.setText("\uD83D\uDD12");           //los doy texto a los TextView
             viewHolder.subTitle.setText("BLOQUEADA");        //de viewHolder

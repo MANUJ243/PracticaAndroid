@@ -154,7 +154,7 @@ public class Resolver extends AppCompatActivity {
         if (textViewIntento.getText().toString().equals(nombreFilm.toUpperCase())){
             textViewIntento.setText("VICTORIA");
 
-            actualizarPuntuacion(user.getUid(),3);
+            actualizarPuntuacion(user.getUid(),1);
         }
     }
 
@@ -169,9 +169,5 @@ public class Resolver extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        try {
-            FireMetodos.semaphore.acquire();
-        } catch (InterruptedException e) {
-        }
     }
 }

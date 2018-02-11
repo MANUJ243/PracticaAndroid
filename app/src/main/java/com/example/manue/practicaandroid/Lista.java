@@ -11,20 +11,22 @@ import android.widget.ListView;
 public class
 Lista extends AppCompatActivity {
     ListView lista;
+    public static ListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
+        FireMetodos.getPeliculaArrayList();
 
         lista = findViewById(R.id.listaView);                    //cojo por codigo el listView
 
-        ListAdapter adapter = new ListAdapter(this, FireMetodos.listaD);  //inicializo mi ListAdapter, pasandole el contexto
+        adapter = new ListAdapter(this, FireMetodos.listaD);  //inicializo mi ListAdapter, pasandole el contexto
         lista.setAdapter(adapter);
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (FireMetodos.puntos == position *3){
+                if (FireMetodos.puntos == position){
                     Pelicula pelicula = (Pelicula) FireMetodos.listaD.get(position);
                     resolverAction(pelicula.desc,pelicula.nombre);
                 }
