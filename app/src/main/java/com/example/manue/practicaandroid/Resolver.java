@@ -165,4 +165,13 @@ public class Resolver extends AppCompatActivity {
             mDatabase.child("usuarios").child(UID).child("puntosBSO").setValue(FireMetodos.puntosBSO+points);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        try {
+            FireMetodos.semaphore.acquire();
+        } catch (InterruptedException e) {
+        }
+    }
 }
