@@ -1,8 +1,5 @@
 package com.example.manue.practicaandroid;
 
-import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -11,18 +8,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
-import java.util.concurrent.Semaphore;
-
-/**
- * Created by manue on 20/01/2018.
- */
 
 public class FireMetodos {
     public static ArrayList<Pelicula> listaD = new ArrayList<>();
     public static ArrayList<PeliculaBSO> listaBSO = new ArrayList<>();
-    public static int puntos = -1;
-    public static int puntosBSO = -1;
-    private static final String TAG = "FIREMETHOTS: ";
+    public static int puntos;
+    public static int puntosBSO;
 
     public static void getPeliculaArrayList() {
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("peliculas");
@@ -43,7 +34,6 @@ public class FireMetodos {
 
                 @Override
                 public void onCancelled(DatabaseError error) {
-                    Log.i("FIREBASE METHOTS", error.toString());
                 }
             });
     }
@@ -68,7 +58,6 @@ public class FireMetodos {
 
                 @Override
                 public void onCancelled(DatabaseError error) {
-                    Log.i("FIREBASE METHOTS", error.toString());
                 }
             });
     }
@@ -76,7 +65,7 @@ public class FireMetodos {
     public static void anadirPuntuacionUser(FirebaseUser user){
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("usuarios").child(user.getUid()).child("puntos").setValue(0);
-        mDatabase.child("usuarios").child(user.getUid()).child("puntosBSO").setValue(0);
+        mDatabase.child("usuarios").child(user.getUid()).child("puntosBSO").setValue(-1);
     }
 
     public static void getPuntosFromFirebase(final boolean flag) {
@@ -99,7 +88,6 @@ public class FireMetodos {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }

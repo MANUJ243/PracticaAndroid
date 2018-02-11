@@ -5,12 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-
 import java.util.List;
-
-/**
- * Created by MANUEL MORENO DELGADO
- */
 
 public class ListAdapter extends BaseAdapter{
     List<Pelicula> peliculas;                                         //declaro variables
@@ -37,30 +32,30 @@ public class ListAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {    //con el inflater
-        View layout = view;                                         //paso XML a objetos
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        View layout = view;
         UserViewHolder viewHolder = null;
 
         if (layout == null){
             layout = inflater.inflate(R.layout.fila_list, viewGroup, false);
-            viewHolder = new UserViewHolder(layout);                //llamo a viewHolder para evitar
-            layout.setTag(viewHolder);                              //cargar constantemente los TextView
+            viewHolder = new UserViewHolder(layout);
+            layout.setTag(viewHolder);
         }else{
             viewHolder = (UserViewHolder) layout.getTag();
         }
 
         if (FireMetodos.puntos > i){
-            viewHolder.title.setText(peliculas.get(i).desc);           //los doy texto a los TextView
-            viewHolder.subTitle.setText(peliculas.get(i).nombre);        //de viewHolder
+            viewHolder.title.setText(peliculas.get(i).desc);
+            viewHolder.subTitle.setText(peliculas.get(i).nombre);
         }else if(FireMetodos.puntos == i ){
-            viewHolder.title.setText(peliculas.get(i).desc);           //los doy texto a los TextView
-            viewHolder.subTitle.setText("1 "+getEmojiByUnicode(0x1F31F));        //de viewHolder
+            viewHolder.title.setText(peliculas.get(i).desc);
+            viewHolder.subTitle.setText("1 "+getEmojiByUnicode(0x1F31F));
         }else{
-            viewHolder.title.setText("\uD83D\uDD12");           //los doy texto a los TextView
-            viewHolder.subTitle.setText("BLOQUEADA");        //de viewHolder
+            viewHolder.title.setText("\uD83D\uDD12");
+            viewHolder.subTitle.setText("BLOQUEADA");
         }
 
-        return layout;                                              //retorno el layout
+        return layout;
     }
 
     public String getEmojiByUnicode(int unicode){

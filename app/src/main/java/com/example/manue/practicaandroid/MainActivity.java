@@ -3,7 +3,6 @@ package com.example.manue.practicaandroid;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -11,7 +10,6 @@ import android.widget.ProgressBar;
 public class MainActivity extends AppCompatActivity {
     Button boton1;
     ProgressBar progressBar;
-    private static final String TAG = "MAIN :";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +20,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void accionSinglePlayer(View view) {
-        Intent intent = new Intent(this, Lista.class);
+        Intent intent = new Intent(this, RecyclePeliculas.class);
         startActivity(intent);
     }
 
     public void accionBSOQuiz(View view) {
-        //Intent intent = new Intent(this, Lista.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, Lista.class);
+        startActivity(intent);
     }
 
     @Override
@@ -39,7 +37,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void accionPerfil(View view) {
-        Intent intent = new Intent(this, RecyclePeliculas.class);
-        startActivity(intent);
     }
 }

@@ -3,7 +3,6 @@ package com.example.manue.practicaandroid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -19,9 +18,9 @@ Lista extends AppCompatActivity {
         setContentView(R.layout.activity_lista);
         FireMetodos.getPeliculaArrayList();
 
-        lista = findViewById(R.id.listaView);                    //cojo por codigo el listView
+        lista = findViewById(R.id.listaView);
 
-        adapter = new ListAdapter(this, FireMetodos.listaD);  //inicializo mi ListAdapter, pasandole el contexto
+        adapter = new ListAdapter(this, FireMetodos.listaD);
         lista.setAdapter(adapter);
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

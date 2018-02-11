@@ -1,9 +1,5 @@
 package com.example.manue.practicaandroid;
 
-/**
- * Created by manue on 10/02/2018.
- */
-
 public class PeliculaBSO {
     private String Title;
     private String url;

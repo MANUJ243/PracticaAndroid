@@ -2,7 +2,6 @@ package com.example.manue.practicaandroid;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,7 +18,6 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private Context mContext;
     private List<PeliculaBSO> mData;
-    private MediaPlayer mediaPlayer;
 
     public RecyclerViewAdapter(Context mContext, List<PeliculaBSO> mData) {
         this.mContext = mContext;
@@ -36,11 +34,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.tv_pelicula_title.setText("Intentalo ;)");
-
-        if (FireMetodos.puntosBSO > position) {
+        if (FireMetodos.puntosBSO >= position) {
             holder.pelicula_thumbnail.loadImageUrl(mData.get(position).getUrl());
             holder.tv_pelicula_title.setText(mData.get(position).getTitle());
+        }else{
+            holder.tv_pelicula_title.setText("Intentalo ;)");
         }
 
         if (FireMetodos.puntosBSO + 1 == position) {
