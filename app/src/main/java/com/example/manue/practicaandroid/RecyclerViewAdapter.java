@@ -2,11 +2,13 @@ package com.example.manue.practicaandroid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.master.glideimageview.GlideImageView;
 import java.util.List;
@@ -37,11 +39,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         if (FireMetodos.puntosBSO >= position) {
             holder.pelicula_thumbnail.loadImageUrl(mData.get(position).getUrl());
             holder.tv_pelicula_title.setText(mData.get(position).getTitle());
-        }else{
+        }else if (FireMetodos.puntosBSO + 1 == position) {
             holder.tv_pelicula_title.setText("Intentalo ;)");
-        }
 
-        if (FireMetodos.puntosBSO + 1 == position) {
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -52,6 +52,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     mContext.startActivity(intent);
                 }
             });
+        } else {
+            holder.tv_pelicula_title.setText("Bloqueado :(");
+            holder.pelicula_thumbnail.setBackgroundResource(R.drawable.gradient2);
         }
     }
 

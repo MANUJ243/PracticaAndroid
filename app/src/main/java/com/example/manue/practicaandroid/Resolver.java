@@ -1,5 +1,6 @@
 package com.example.manue.practicaandroid;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -8,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -50,10 +53,10 @@ public class Resolver extends AppCompatActivity {
             textView.setText(texto);
         }else{
             textView.setText("BANDA SONORA");
+            mediaPlayer = MediaPlayer.create(getApplicationContext() , Uri.parse(audio));
             textView.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    mediaPlayer = MediaPlayer.create(getApplicationContext() , Uri.parse(audio));
-                    mediaPlayer.start();
+                    reproducirBSO();
                 }
             });
         }
@@ -168,5 +171,15 @@ public class Resolver extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        mediaPlayer.stop();
+    }
+
+    private void reproducirBSO() {
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.seekTo(0);
+            mediaPlayer.start();
+        }else{
+            mediaPlayer.start();
+        }
     }
 }
