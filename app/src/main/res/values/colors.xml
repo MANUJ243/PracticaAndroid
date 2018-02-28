@@ -3,9 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="inicioColor">#178474</color>
+    <color name="inicioColor">#434343</color>
     <color name="blanco">#ffffff</color>
-    <color name="fondoInicio">#c4a003</color>
+    <color name="fondoInicio">#232526</color>
     <color name="colorNegro">#000000</color>
+    <color name="metal">#5d5e60</color>
     <color name="grisMate">#2d2d2d</color>
 </resources>

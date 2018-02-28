@@ -171,7 +171,9 @@ public class Resolver extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        mediaPlayer.stop();
+        if (!audio.equals("")) {
+            mediaPlayer.stop();
+        }
     }
 
     private void reproducirBSO() {
